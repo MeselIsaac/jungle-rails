@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello. </h1>
+    <p>
+       This is an email confirming that your order has been placed. Your total is <%= @order.total_cents/ 100.0%>
+    </p>
+    <p>
+    <% @cart.each do |item| %>
+
+    "Product Name: " <%= item[:product].name %> 
+    "Quantity: " <%= item[:quantity] %>
+    "Unit-Price: " <%= item[:product].price %>
+    "Total Product Cost: "<%= item[:quantity] * item[:product].price %>
+    </p>
+    </br>
+    
+     
+    <% end %>
+   
+    <p>
+        Thanks for giving us your money.
+    </p>
+    
+  </body>
+</html>
+

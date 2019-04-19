@@ -56,6 +56,10 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    if order.save
+      
+      OrderMailer.order_placed(order, enhanced_cart).deliver_now
+    end
     order
   end
 
