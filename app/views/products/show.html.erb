@@ -24,6 +24,29 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+      
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+        
+        <h3> User Ratings </h3>
+          
+          <% @rating.zip(@userID) do |rating, id| %>
+            <dt>User:</dt>
+          <dd><%= User.find(id).first_name %> <%= User.find(id).last_name %></dd>
+         
+          <dt>Rating:</dt>
+          <dd><%=rating.rating%> / 5</dd>
+          <dt>Description:</dt>
+          <dd><%= rating.description %></dd>
+        </dl>
+      </div>
+      
+       
+      <% end %>
+      
+     
+      
+   
     </div>
 
   </article>
