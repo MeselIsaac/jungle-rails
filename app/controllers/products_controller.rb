@@ -6,10 +6,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @Rating = Rating.new
+    
     @rating = Rating.where(product_id: params[:id])
     
     @userID = Rating.where(product_id: params[:id]).pluck(:user_id)
-    # @user = User.find(@userID)
+    
   end
 
 end
