@@ -1,15 +1,18 @@
 class RatingsController < ApplicationController
     def create
         
-        
-        @rating = Rating.new(rating_params, product_id: params[:id])
-        @rating.user_id = current_user
+        # @rating = Rating.new(rating_params)
+
+        @product = Product.find(params[:product_id])
+        @rating = @product.ratings.new(rating_params)
+        @rating.user = current_user
+        @rating.save
 
         
-        
-
         if @rating.save
-            redirect_to [:root], notice: "Rating Created"
+            
+            redirect_to [:root], alert: "Rating Created"
+            
         else
             
             redirect_to :back
